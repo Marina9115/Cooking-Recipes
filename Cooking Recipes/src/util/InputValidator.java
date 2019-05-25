@@ -55,101 +55,21 @@ public class InputValidator {
 		}
 	}
 
-//	public static <Role> List<Role> checkValidRoles(List<Role> inputRoles) {
-//		Set<Role> roles = new HashSet(ArrayList.asList(Role.value()));
-//		for (Role role : inputRoles) {
-//			if (!roles.contains(role)) {
-//				throw new IllegalArgumentException(String.format("Invalid role: %s", role));
-//			}
-//		}
-//
-//		return inputRoles;
-//	}
-
-	public static void validateRecipe(Recipe u) {
-
+	public static void validateRecipe(Recipe entity) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
-	public static void validateCategory(Category u) {
+	public static void validateCategory(Category entity) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
-	public static void validateComment(Comment u) {
+	public static void validateComment(Comment entity) {
 		// TODO Auto-generated method stub
-
+		
 	}
+	
+	
 
-//	public static String getValidStringParam(String validationPattern, String inputMsg, String invalidInputMsg) {
-//		System.out.print(inputMsg);
-//		String input = Input.in.nextLine();
-//
-//		while (!input.matches(validationPattern)) {
-//			System.out.println(invalidInputMsg);
-//			System.out.print(inputMsg);
-//			input = Input.in.nextLine();
-//		}
-//
-//		return input;
-//	}
-//
-//	public static String[] usernameAndPassword() {
-//		String[] usernameAndPass = new String[2];
-//		String usernameInputMsg = "Enter username: ";
-//		String passwordInputMsg = "Enter password: ";
-//		System.out.print(usernameInputMsg);
-//		usernameAndPass[0] = Input.in.nextLine();
-//		System.out.print(passwordInputMsg);
-//		usernameAndPass[1] = Input.in.nextLine();
-//
-//		while (!usernameAndPass[0].matches(ValidationPatterns.username)
-//				&& !usernameAndPass[1].matches(ValidationPatterns.password)) {
-//			System.out.println("Invalid username or password!");
-//
-//			System.out.print(usernameInputMsg);
-//			usernameAndPass[0] = Input.in.nextLine();
-//			System.out.print(passwordInputMsg);
-//			usernameAndPass[1] = Input.in.nextLine();
-//		}
-//
-//		return usernameAndPass;
-//	}
-//
-//	public static List<Role> getValidRoles(String inputMsg, String invalidInputMsg) {
-//		List<Role> roles = new ArrayList<>();
-//
-//		while (roles.size() == 0) {
-//			System.out.print(inputMsg);
-//			String input = Input.in.nextLine();
-//
-//			List<String> inputElements = getAllInputMatchedElements(input);
-//
-//			for (String element : inputElements) {
-//				addRole(roles, element, invalidInputMsg);
-//			}
-//		}
-//
-//		return roles;
-//	}
-//	
-//	private static List<String> getAllInputMatchedElements(String input) {
-//		List<String> allMatches = new ArrayList<>();
-//		Matcher matches = Pattern.compile(ValidationPatterns.roleEnum).matcher(input);
-//		while (matches.find()) {
-//			allMatches.add(matches.group("role"));
-//		}
-//		
-//		return allMatches;
-//	}
-//
-//	private static void addRole(List<Role> roles, String role, String invalidRoleMsg) {
-//		try {
-//			Role r = Role.valueOf(Role.class, role.toUpperCase());
-//			roles.add(r);
-//		} catch (IllegalArgumentException e) {
-//			System.err.println(invalidRoleMsg);
-//		}
-//	}
 }

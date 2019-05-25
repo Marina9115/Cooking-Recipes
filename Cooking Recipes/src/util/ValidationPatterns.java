@@ -14,4 +14,14 @@ public class ValidationPatterns {
 	//Comments
 	public static String text = ".{5,1500}";
 	
+	
+	//Recipes
+	public static String title="^.{2,120}$";
+	public static String shortDescription="^.{2,250}$";
+	public static String usedProducts="^.{20,500}$";
+
+	//Category
+	
+	public static String nameCategory = "^{2,120}$";
+	public static String descriptionCategory = "^{10,500}$";
 }

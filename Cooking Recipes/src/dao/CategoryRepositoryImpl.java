@@ -9,7 +9,7 @@ import dao.infrastucture1.Repository;
 import dao.infrastucture1.RepositoryImpl;
 import model.Category;
 
-public class CategoryRepositoryImpl extends RepositoryImpl<Long, Category> {
+public class CategoryRepositoryImpl extends RepositoryImpl<Long, Category> implements CategoryRepository {
 
 //public static void main(String[] args) throws EntityExistsException, EntityDoesNotExistException {
 //	CategoryRepositoryImpl repo = (CategoryRepositoryImpl) new CategoryRepositoryImpl();

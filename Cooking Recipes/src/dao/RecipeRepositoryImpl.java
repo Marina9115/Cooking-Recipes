@@ -7,7 +7,7 @@ import model.Recipe;
 import model.UsedProducts;
 import model.User;
 
-public class RecipeRepositoryImpl extends RepositoryImpl<Long, Recipe>{
+public class RecipeRepositoryImpl extends RepositoryImpl<Long, Recipe> implements RecipeRepository{
 
 private static int sequence = 0;
 	
