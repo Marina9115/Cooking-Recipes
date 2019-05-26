@@ -1,9 +1,13 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.management.relation.RoleStatus;
 
 import dao.Identifiable;
 
@@ -181,12 +185,39 @@ public class User implements Identifiable<Long> {
 	public String getUsername() {
 		return username;
 	}
+	
+	
+	public String printHeader() {
+		return String.format(
+				"| U:  %12s | %12.12s | %12.12s | %15.15s | %12.12s | %12.12s | %12.12s | %12.12s | %16.16s | %16.16s | %16.16s |",
+				"ID", "First Name", "Last Name", "Email", "Username", "Password", "Roles", "Gender", "Status",
+				"Created", "Modified");
+	}
 
 	@Override
 	public String toString() {
+		String createdString = created.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+		String modifiedString = modified.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+		
 		return String.format(
-				"User [id=%s, firstName=%s, lastName=%s, email=%s, username=%s, gender=%s, role=%s, status=%s]", id,
-				firstName, lastName, email, username, gender, role, status);
+				"| U:  %012d | %12.12s | %12.12s | %15.15s | %12.12s | %12.12s | %12.12s | %12.12s | %16.16s | %16.16s | %16.16s |",
+				id, firstName, lastName, email, username, password, role, gender, status, createdString,
+				modifiedString);
 	}
 
-}
+	
+	private String hidePassString() {
+		StringBuilder pass = new StringBuilder();
+		for (int i = 0; i < password.length(); i++) {
+			pass.append("*");
+		}
+		return pass.toString();
+	}
+
+	
+	}
+
+
+	
+	
+

@@ -177,6 +177,15 @@ public class Recipe implements Identifiable<Long> {
 		// TODO Auto-generated method stub
 		return id;
 	}
+	
+	//TODO: 	
+//		public String printHeader() {
+//			return String.format(
+//					"| P: %12s | %12.12s | %12.12s | %15.15s | %12.12s | %12.12s | %12.12s | %12.12s | %16.16s | %16.16s | %16.16s |",
+//					"ID", "First Name", "Last Name", "Email", "Username", "Password", "Roles", "Gender", "Status",
+//					"Created", "Modified");
+//		}
+	//
 
 	@Override
 	public String toString() {

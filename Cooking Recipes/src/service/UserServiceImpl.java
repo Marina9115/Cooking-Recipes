@@ -12,11 +12,12 @@ import model.User;
 public class UserServiceImpl implements UserService {
 
 	private UserRepository userRepository = new UserRepositoryImpl();
+	
 
 	@Override
 	public User findById(long id) throws EntityDoesNotExistException {
 		return userRepository.findById(id)
-				.orElseThrow(() -> new EntityDoesNotExistException("Can't find user with id: " + id));
+				.orElseThrow(() -> new EntityDoesNotExistException(String.format("Cannot find user with id: %d", id)));
 	}
 
 	@Override
@@ -47,7 +48,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User delete(long id) throws EntityDoesNotExistException {
 		return userRepository.delete(id)
-				.orElseThrow(() -> new EntityDoesNotExistException("Can't find user with id: " + id));
+				.orElseThrow(() -> new EntityDoesNotExistException(String.format("Can't find user with id: " + id)));
 	}
 
 }
