@@ -22,12 +22,12 @@ public class Main {
 
 		System.out.println(userController.add(user));
 		System.out.println(userController.add(user2));
-		System.out.println(userController.findAll());
-		System.out.println(userController.findById(1));
-		userController.findById(1).setFirstName("Test");
-		
-		System.out.println(userController.update(user));
-		System.out.println(userController.delete(2));
+//		System.out.println(userController.findAll());
+//		System.out.println(userController.findById(1));
+//		userController.findById(1).setFirstName("Test");
+//		
+//		System.out.println(userController.update(user));
+//		System.out.println(userController.delete(2));
 		
 		System.out.println();
 		System.out.println(userController.findAll());

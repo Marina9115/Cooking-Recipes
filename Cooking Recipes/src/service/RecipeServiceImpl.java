@@ -3,6 +3,8 @@ package service;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
+
+
 import cooking.exceptions.EntityDoesNotExistException;
 import cooking.exceptions.EntityExistsException;
 import dao.RecipeRepository;
@@ -32,19 +34,31 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 
 	public Recipe add(Recipe entity) throws EntityExistsException, EntityDoesNotExistException {
-		return null;
+		Collection<Recipe> r = recipeRepository.findAll();
+		long appearances = r.stream().filter(x->x.getTitle() == entity.getTitle()).count();
+		if(appearances != 0) {
+			throw new IllegalArgumentException("Recipe with the same title already exists");
+		}
+		return recipeRepository.add(entity);
 	}
 
-	@Override
-	public Recipe update(Recipe entity) throws EntityDoesNotExistException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+	
 	@Override
 	public Recipe delete(long id) throws EntityDoesNotExistException {
 		return recipeRepository.delete(id).orElseThrow(
 				() -> new EntityDoesNotExistException(String.format("Cannot find recipe with id: %d", id)));
 
 	}
-}
+
+	@Override
+	public Recipe update(Recipe entity) throws EntityDoesNotExistException {
+		Recipe r = findById(entity.getId());
+		if(r == null) {
+			throw new EntityDoesNotExistException("Cannot find such recipe");
+		}
+		
+	return recipeRepository.update(entity);
+	}
+	}
+

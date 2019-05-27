@@ -9,6 +9,7 @@ import dao.CommentRepositoryImpl;
 import dao.UserRepository;
 import dao.UserRepositoryImpl;
 import model.Comment;
+import model.Recipe;
 
 public class CommentServiceImpl implements CommentService {
 
@@ -30,14 +31,17 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public Comment add(Comment entity) throws EntityExistsException, EntityDoesNotExistException {
 		Comment comment = findById(entity.getId());
-//			if (comment != null)
-//				throw new EntityExistsException()
-
-		return commentRepository.add(entity);
+		if (comment != null)
+				throw new EntityExistsException();
+	return commentRepository.add(entity);
 	}
 
 	@Override
 	public Comment update(Comment entity) throws EntityDoesNotExistException {
+		Comment p = findById(entity.getId());
+		if(p == null) {
+			throw new EntityDoesNotExistException("Cannot find such comment");
+		}
 
 		return commentRepository.update(entity);
 	}

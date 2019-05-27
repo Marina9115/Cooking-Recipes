@@ -30,10 +30,11 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public Category add(Category entity) throws EntityExistsException, EntityDoesNotExistException {
-
-		Category category = findById(entity.getId());
-//			if (category != null)
-//				throw new EntityExistsException()
+		Collection<Category> r = categoryRepository.findAll();
+		long appearances = r.stream().filter(x->x.getName() == entity.getName()).count();
+		if(appearances != 0) {
+			throw new IllegalArgumentException("Category with the same name already exists");
+		}			
 
 		return categoryRepository.add(entity);
 	}
@@ -42,13 +43,10 @@ public class CategoryServiceImpl implements CategoryService {
 	public Category update(Category entity) throws EntityDoesNotExistException {
 
 		Category category = findById(entity.getId());
-//			if (!category.getName().equals(entity.getName())) {
-//				throw new IllegalArgumentException("Cannot change name");
-//			}
-//			if (!category.getRecipes().equals(entity.getRecipes())) {
-//				throw new IllegalArgumentException("Cannot change recipe");
-//			}
-//			
+		
+		if(category == null) {
+			throw new EntityDoesNotExistException("Cannot find such category");
+		}
 		return categoryRepository.update(entity);
 	}
 
